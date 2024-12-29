@@ -41,10 +41,13 @@ export default function FetchIndv() {
         <h1>Current Post ID : {currentPostId}</h1>
         <p>{data.title}</p>
         <p>{data.body}</p>
+        <button
+          onClick={() => navigate(-1)}
+          style={{ width: "max-content", padding: "5px 10px" }}
+        >
+          Back to home <i className="far fa-hand-point-right"></i>
+        </button>
       </div>
-      <button onClick={() => navigate(-1)} style={{ marginTop: "20px" }}>
-        Back to home <i className="far fa-hand-point-right"></i>
-      </button>
     </>
   );
 }
