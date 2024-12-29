@@ -61,4 +61,21 @@ Fetches and reads data (GET requests) from an API and automatically caches the r
 
 useMutation
 Used for Creating, Updating, and Deleting data (POST, PUT, DELETE requests) from an API.
+
+Garbage collection time or gcTime
+In React Query v5, the cacheTime option has been renamed with gcTime.
+When you use React Query to get data from an API, it saves the results in the local cache. This means that when you visit the same page again, it will show the data from the cache instead of fetching it or making another API request again. The cache updates automatically if the data changes, so you always get the latest data.
+NOTE : You are getting the cache data and not the server data.
+
+By Default, React Query will keep the data in the cache for 5 minutes. After 5 minutes, it will remove the data from the cache and fetch the data again when you visit the page.
+
+Use Case : Imagine you're fetching a list of users. If you go back to same page, React Query will show the saved list from cache instead of reloading it from the server, making the app faster. If a new user is added, React Query will automatically update the cache with the new user. Because it just don't show the loading but you can see the call in the networks and in pending state of the fetch request, you are still be able to see the old data. When the status is success, you will see the new data, if there is new user added and that response is saved in the cache. So you are always be able to see the latest data.
+
+
+Stale Time
+This determines how long fetched data is considered fresh. If the data is older than the stale time, React Query will refetch the data when you visit the page again. By default, the stale time is 0 milliseconds, which means that React Query will always refetch the data when you visit the page again.
+
+When data is initial fetched or updated, It is considered fresh.
+After the stale time (in milliseconds) is over, the data is considered stale. If you visit the page again, React Query will refetch the data. But before then no api will be called.
+
 */
