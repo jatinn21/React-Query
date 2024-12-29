@@ -1,3 +1,9 @@
-export default function Footer() {
-  return <div>Footer</div>;
-}
+const Footer = () => {
+  return (
+    <footer>
+      <p>copyright @JatinSharma</p>
+    </footer>
+  );
+};
+
+export default Footer;
