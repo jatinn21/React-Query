@@ -17,6 +17,9 @@ export default function FetchRQ() {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchedPosts,
+    staleTime: 10000,
+    refetchInterval: 2000,
+    refetchIntervalInBackground: true,
   });
 
   if (isError) {

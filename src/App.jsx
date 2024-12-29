@@ -78,4 +78,22 @@ This determines how long fetched data is considered fresh. If the data is older 
 When data is initial fetched or updated, It is considered fresh.
 After the stale time (in milliseconds) is over, the data is considered stale. If you visit the page again, React Query will refetch the data. But before then no api will be called.
 
+
+Polling
+Polling is a technique used to fetch data from an API at regular intervals. This is useful when you want to show the latest data to the user without them having to refresh the page. Like in the Grow stock price example, you can use polling to fetch the latest stock price every 2 seconds and show it to the user.
+
+The simplest way to implement polling in React Query is to use the refetchInterval option in the useQuery hook. This option takes a number in milliseconds and tells React Query to refetch the data from the API at that interval.
+
+The refetchInterval will always refetch the data at the given interval, even if the data is still considered fresh or is not "stale" within the staleTime period.
+
+    queryKey: ["posts"],
+    queryFn: fetchedPosts,
+    staleTime: 10000,
+    refetchInterval: 2000,
+In This case also after every 2 second api call will automatically be made to get the latest data. Even though the data is fresh for 10 seconds, the api will be called after every 2 seconds.
+
+The request will only be made if the tab is on focus or is opened. If user navigated to another tab, the request will not be made. This is to save the resources and to make the app more efficient. But when the user comes back to the tab, the request will be made again.
+
+To make the request even if the tab is not in focus, you can use the refetchIntervalInBackground option in the useQuery hook. This option takes a boolean value and tells React Query to refetch the data even if the tab is not in the scope or not in focused mode.
+
 */
