@@ -1,22 +1,27 @@
-import "../errorpage.css";
-import { useNavigate } from "react-router";
-export default function ErrorPage() {
-  const navigate = useNavigate();
+import "./errorpage.css";
+import PropTypes from "prop-types";
 
+ErrorPage.propTypes = {
+  message: PropTypes.string.isRequired,
+};
+
+export default function ErrorPage({ message }) {
+  console.log("message:", message);
   return (
-    <div className="container">
-      <div className="gif">
-        <img src="https://i.postimg.cc/2yrFyxKv/giphy.gif" alt="gif_ing" />
+    <>
+      <div className="message">
+        <div className="overlay"></div>
+        <div className="content">
+          <h1 className="content__header">{message}</h1>
+        </div>
       </div>
-      <div className="content">
-        <h1 className="main-heading">Page Not Found</h1>
-        <p>
-          ...maybe the page you're looking for is not found or never existed.
-        </p>
-        <button onClick={() => navigate(-1)}>
-          Back to home <i className="far fa-hand-point-right"></i>
-        </button>
+
+      <div className="error">
+        <h3 className="error__title">ERROR CODE</h3>
+        <div className="error__code">
+          <h2>404</h2>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

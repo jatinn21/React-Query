@@ -9,13 +9,13 @@ const Header = () => {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/old">FetchOld</NavLink>
+            <NavLink to="/old">Fetch-Old</NavLink>
           </li>
           <li>
-            <NavLink to="/new"> FetchRQ </NavLink>
+            <NavLink to="/new"> Fetch-RQ </NavLink>
           </li>
           <li>
-            <NavLink to="/infinite"> InfiniteScroll </NavLink>
+            <NavLink to="/infinite"> Infinite-Scroll </NavLink>
           </li>
         </ul>
       </div>

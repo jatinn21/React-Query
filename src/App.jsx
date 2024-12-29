@@ -6,13 +6,14 @@ import InfiniteScroll from "./Pages/InfiniteScroll";
 import FetchRQ from "./Pages/FetchRQ";
 import FetchOld from "./Pages/FetchOld";
 import "./App.css";
-import ErrorPage from "./Pages/ErrorPage";
+import ErrorPage from "./Pages/PageNotFound";
+import PageNotFound from "./Pages/PageNotFound";
 
 const route = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <ErrorPage />,
+    errorElement: <PageNotFound />,
     children: [
       {
         path: "/",
@@ -43,3 +44,14 @@ const App = () => {
 };
 
 export default App;
+
+/*
+In React query, the QueryClientProvider is crucial component that provide the QueryClient instance to your react application. This QueryClient is the core part of react-query library that manages the caching, fetching, and updating of your data.
+
+
+new QueryClient();
+This creates the instance of QueryClient that we are creating to provide to the QueryClientProvider.
+
+QueryClientProvider
+this is the part of react-query library and it is used to provide the QueryClient instance to the react application. It is a wrapper component that wraps the entire application and provides the QueryClient instance to the application.
+*/
