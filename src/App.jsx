@@ -101,4 +101,29 @@ The request will only be made if the tab is on focus or is opened. If user navig
 
 To make the request even if the tab is not in focus, you can use the refetchIntervalInBackground option in the useQuery hook. This option takes a boolean value and tells React Query to refetch the data even if the tab is not in the scope or not in focused mode.
 
+
+useMutation
+useMutation is a hook that is used to perform create, update, and delete operations on the data. It is used to make POST, PUT, and DELETE requests to the API.
+Here there is no mutationKey like we have in queryKey in useQuery.
+But we have mutationFn which is used to make the api call to the server.
+
+    const mutation = useMutation(mutationFn,{
+    //Optional configurations options here
+    });
+
+    **mutationKey is optional
+
+We can provide various configurations options to the useMutation hook like onSuccess, onError, onSettled, mutationKey and many more.
+
+onSuccess : This is a function that is called when the mutation is successful.
+onError : This is a function that is called when the mutation fails.
+onSettled : This is a function that is called when the mutation is either successful or fails.
+mutationKey : This is a key that is used to identify the mutation. This is used to invalidate the cache when the mutation is successful.
+
+To call the mutation function, you can store the mutate function that is returned by the useMutation. but then you need .mutate() to call the function.
+Ex : const deleteMutation = useMutation(mutationFn : (id) => deletePost(id));
+onClick = {() => deleteMutation.mutate(id)}
+
+
+
 */

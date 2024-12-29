@@ -13,3 +13,8 @@ export const getPosts = () => {
 export const getSinglePost = (id) => {
   return api.get(`/posts/${id}`);
 };
+
+// To delete a single posts
+export const deleteSinglePost = (id) => {
+  return api.delete(`/posts/${id}`);
+};
