@@ -14,10 +14,10 @@ export default function FetchRQ() {
     }
   };
 
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isPending, isError, error } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchedPosts,
-    // gcTime:0   // If you want to see the loader every time you comes to this page, you can use this option.
+    gcTime:0   // If you want to see the loader every time you comes to this page, you can use this option.
   });
 
   if (isError) {
@@ -26,7 +26,7 @@ export default function FetchRQ() {
 
   return (
     <div>
-      {isLoading && <Loader />}
+      {isPending && <Loader />}
       <ul className="section-accordion">
         {data?.map((post) => {
           const { id, title, body } = post;
