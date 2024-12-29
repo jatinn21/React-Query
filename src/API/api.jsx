@@ -24,6 +24,15 @@ export const updateSinglePost = (id) => {
   return api.patch(`/posts/${id}`);
 };
 
+// For Getting users api to demonstrate infinite scroll
+export const getGithubUsers = async ({ pageParam=1 }) => {
+  console.log("pageParam", pageParam);
+  const res = await axios.get(
+    `https://api.github.com/users?per_page=10&page=${pageParam}`
+  );
+  return res.status === 200 && res.data;
+};
+
 /*
 
 Put and Patch Difference
