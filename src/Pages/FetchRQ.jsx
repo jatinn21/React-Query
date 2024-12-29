@@ -14,16 +14,14 @@ export default function FetchRQ() {
     }
   };
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchedPosts,
     // gcTime:0   // If you want to see the loader every time you comes to this page, you can use this option.
   });
 
-  console.log("-------", isLoading, isError);
-
   if (isError) {
-    return <ErrorPage message={isError.message} />;
+    return <ErrorPage message={error.message} />;
   }
 
   return (
