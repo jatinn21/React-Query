@@ -41,6 +41,9 @@ export default function FetchRQ() {
     onError: () => {
       console.log("Error Deleting Post");
     },
+    onSettled: () => {
+      console.log("Delete Mutation Settled");
+    },
   });
 
   // To Update the Post
@@ -110,7 +113,13 @@ Creating new Data.
 
 When you call .mutate(), it tells React Query to execute the mutation function that you provided in the useMutation hook. In this case, it will call the deleteSinglePost function with the id of the post that you want to delete. This is needed because the mutation is an action that changes the data on the server, unlike queries which are used to fetch the data from the server and are often auto-executed.
 
-queryClient object
-To access the local cache data in the useMutation hook, you can use the queryClient object that is provided by the useMutation hook.
+
+To get the local cache data, 
+Step 1 : you can use the useQueryClient
+const queryClient = useQueryClient();
+
+Step 2 : use the queryClient object that is provided by the useMutation hook.
+queryClient.setQueryData(queryKey,callback function that will return the updated data that you want to set in the cache);
 There is queryClient.getQueryData() function that is used to get the data from the cache.
+
 */
