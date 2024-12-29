@@ -8,3 +8,8 @@ const api = axios.create({
 export const getPosts = () => {
   return api.get("/posts");
 };
+
+// To retrieve single posts from the API
+export const getSinglePost = (id) => {
+  return api.get(`/posts/${id}`);
+};

@@ -8,6 +8,7 @@ import FetchOld from "./Pages/FetchOld";
 import "./App.css";
 import PageNotFound from "./Pages/PageNotFound";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import FetchIndv from "./Pages/FetchIndv";
 
 const route = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const route = createBrowserRouter([
       {
         path: "/new",
         element: <FetchRQ />,
+      },
+      {
+        path: "/new/:currentPostId",
+        element: <FetchIndv />,
       },
       {
         path: "/infinite",
