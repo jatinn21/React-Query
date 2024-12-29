@@ -17,7 +17,8 @@ export default function FetchRQ() {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchedPosts,
-    gcTime:0   // If you want to see the loader every time you comes to this page, you can use this option.
+    // staleTime: 10000, // If you want to see the loader every time you comes to this page, you can use this option.
+    gcTime: 0,
   });
 
   if (isError) {

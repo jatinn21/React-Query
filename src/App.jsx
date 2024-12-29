@@ -6,8 +6,8 @@ import InfiniteScroll from "./Pages/InfiniteScroll";
 import FetchRQ from "./Pages/FetchRQ";
 import FetchOld from "./Pages/FetchOld";
 import "./App.css";
-import ErrorPage from "./Pages/PageNotFound";
 import PageNotFound from "./Pages/PageNotFound";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const route = createBrowserRouter([
   {
@@ -39,6 +39,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={route}></RouterProvider>;
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 };
@@ -54,4 +55,10 @@ This creates the instance of QueryClient that we are creating to provide to the 
 
 QueryClientProvider
 this is the part of react-query library and it is used to provide the QueryClient instance to the react application. It is a wrapper component that wraps the entire application and provides the QueryClient instance to the application.
+
+useQuery
+Fetches and reads data (GET requests) from an API and automatically caches the result.
+
+useMutation
+Used for Creating, Updating, and Deleting data (POST, PUT, DELETE requests) from an API.
 */
