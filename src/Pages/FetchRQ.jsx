@@ -1,4 +1,4 @@
-import { deleteSinglePost, getPosts } from "../API/api";
+import { deleteSinglePost, getPosts, updateSinglePost } from "../API/api";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import ErrorPage from "./ErrorPage";
 import Loader from "../components/UI/Loader";
@@ -29,8 +29,8 @@ export default function FetchRQ() {
     mutationFn: (id) => deleteSinglePost(id),
     onSuccess: (data, id) => {
       console.log(
-        "checking the entire data of allPosts queryKey",
         data,
+        "checking the entire data of allPosts queryKey",
         id,
         queryClient.getQueryData(["allPosts"])
       );
@@ -40,6 +40,31 @@ export default function FetchRQ() {
     },
     onError: () => {
       console.log("Error Deleting Post");
+    },
+  });
+
+  // To Update the Post
+  const updateMutation = useMutation({
+    mutationFn: (id) => updateSinglePost(id),
+    onSuccess: (data, id) => {
+      queryClient.setQueryData(["allPosts"], (cacheData) => {
+        console.log(
+          data,
+          "checking the entire data of allPosts queryKey",
+          cacheData
+        );
+        return cacheData.map((post) => {
+          return post.id === id
+            ? { ...post, title: "Updated Title By Jatin" }
+            : post;
+        });
+      });
+    },
+    onError: () => {
+      console.log("Error Updating Post");
+    },
+    onSettled: () => {
+      console.log("Update Mutation Settled");
     },
   });
 
@@ -59,8 +84,14 @@ export default function FetchRQ() {
                 <h2>{title}</h2>
                 <p>{body}</p>
               </NavLink>
-              <button onClick={() => deleteMutation.mutate(id)}>
+              <button
+                onClick={() => deleteMutation.mutate(id)}
+                style={{ backgroundColor: "red" }}
+              >
                 Delete Post
+              </button>
+              <button onClick={() => updateMutation.mutate(id)}>
+                Update Post
               </button>
             </li>
           );

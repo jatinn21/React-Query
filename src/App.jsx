@@ -125,5 +125,4 @@ Ex : const deleteMutation = useMutation(mutationFn : (id) => deletePost(id));
 onClick = {() => deleteMutation.mutate(id)}
 
 
-
 */

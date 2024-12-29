@@ -18,3 +18,16 @@ export const getSinglePost = (id) => {
 export const deleteSinglePost = (id) => {
   return api.delete(`/posts/${id}`);
 };
+
+// To update a single posts
+export const updateSinglePost = (id) => {
+  return api.patch(`/posts/${id}`);
+};
+
+/*
+
+Put and Patch Difference
+Put is used to update the entire object. If you have a user object with name,email,password,profile_picture and you want to update the name and the age of the user, you will have to send the entire object with the updated name and age. If you send only the name and age, the other fields will be removed from the object.
+
+Patch is used to update only the specific fields of the object. If you have a user object with name,email,password,profile_picture and you want to update the name and the age of the user, you will have to send only the name and age. The other fields will remain the same.
+*/
